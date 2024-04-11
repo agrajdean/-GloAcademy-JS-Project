@@ -6,4 +6,4 @@ const screens = "b";
 const screenPrice = "c";
 let rollback = 1;
 let fullPrice = 2;
-let adaptive = 3;
+let adaptive = 4;

@@ -1,26 +1,49 @@
-let title = "My project";
-console.log(typeof title);
-let screens = "Простые, Сложные, Интерактивные";
-console.log(screens.length);
-let screenPrice = "49";
-console.log(
-  "Стоимость верстки экранов  " + screenPrice + " рублей/долларов/гривен/юани"
-);
-let rollback = "16";
-let fullPrice = "150000";
-console.log(
-  "“Стоимость разработки сайта " + fullPrice + " рублей/ долларов/гривен/юани"
-);
-console.log(typeof fullPrice);
-let adaptive = "true";
-console.log(typeof adaptive);
+"use strict";
 
-screens = screens.toLowerCase(); //запись в нижнем регистре
-screens = screens.split(/\s*,\s*/); //разбиваем строку на массив
+let title = prompt("Как называется Ваш проект?");
+console.log(title);
+
+let screens = prompt(
+  "Какие типы экранов нужно разработать?",
+  "Простые, Cложные, Интерактивные"
+);
 console.log(screens);
 
-console.log(
-  "Процент отката посреднику за работу " +
-    fullPrice * (rollback / 100) +
-    " рублей"
-); //Процент отката посреднику за работу
+let screenPrice = +prompt("Сколько будет стоить данная работа?");
+
+let rollback = 10;
+
+let adaptive = prompt("Нужен ли адаптив на сайте?");
+
+if (adaptive == "Да") {
+  console.log(true);
+} else if (adaptive == "да") {
+  console.log(true);
+} else {
+  console.log(false);
+}
+
+let service1 = prompt("Какой дополнительный тип услуги нужен?");
+let servicePrice1 = +prompt("Сколько это будет стоить?");
+let service2 = prompt("Какой ещё дополнительный тип услуги нужен?");
+let servicePrice2 = +prompt("Сколько это будет стоить?");
+let fullPrice = screenPrice + servicePrice1 + servicePrice2;
+
+let servicePercentPrice = fullPrice - (fullPrice * rollback) / 100;
+
+console.log(fullPrice);
+console.log(Math.ceil(servicePercentPrice));
+
+switch (true) {
+  case fullPrice > 30000:
+    console.log("Даем скидку в 10%");
+    break;
+  case fullPrice > 15000 && fullPrice < 30000:
+    console.log("Даем скидку в 5%");
+    break;
+  case fullPrice < 15000 && fullPrice > 0:
+    console.log("Скидка не предусмотрена");
+    break;
+  case fullPrice <= 0:
+    console.log("Что-то пошло не так");
+}
